@@ -11,7 +11,9 @@ export const Welcome = defineComponent({
                 芝士logo    {/*找图片*/}
                 <h1>芝士名字</h1>
             </header>
-            <main><RouterView/></main>
+            <main class={s.main}><RouterView/></main>
         </div>
     }
 })
+
+// TODO: 找logo图片
