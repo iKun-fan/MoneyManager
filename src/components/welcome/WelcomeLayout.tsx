@@ -1,7 +1,7 @@
 import {defineComponent, isProxy} from "vue";
-import s from './First.module.scss'
+import s from './WelcomeLayout.module.scss'
 
-export const Test = defineComponent({
+export const WelcomeLayout = defineComponent({
     setup: (props, context) => {
         const {slots} = context
         return () => (

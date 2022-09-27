@@ -1,22 +1,23 @@
 import {defineComponent} from "vue";
-import s from './First.module.scss'
+import s from './WelcomeLayout.module.scss'
 import {RouterLink} from "vue-router";
 import cloud from '../../assets/icons/cloud.svg'
+import {WelcomeLayout} from "./WelcomeLayout";
 
 export const Forth = defineComponent({
     setup: (props, context) => {
         return () => (
-            <div class={s.wrapper}>
-                <div class={s.card}>
-                    <img class={s.icon} src={cloud} alt="芝士图片"/>
-                    <h2>整点字<br/>再整点字</h2>
-                </div>
-                <div class={s.actions}>
-                    <RouterLink class={s.fake} to="/start">跳过</RouterLink>
-                    <RouterLink to="/start">下一页</RouterLink>
-                    <RouterLink class={s.fake} to="/start">跳过</RouterLink>
-                </div>
-            </div>
+            <WelcomeLayout>
+                {{
+                    icon: () => <img class={s.icon} src={cloud} alt="芝士云"/>,
+                    title: () => <h2>整一行文字<br/>再整一行文字</h2>,
+                    buttons: () => <>
+                        <RouterLink class={s.fake} to="/start">跳过</RouterLink>
+                        <RouterLink to="/start">完成</RouterLink>
+                        <RouterLink class={s.fake} to="/start">跳过</RouterLink>
+                    </>
+                }}
+            </WelcomeLayout>
         )
     }
 })
