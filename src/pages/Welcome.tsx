@@ -3,7 +3,6 @@ import {RouterView} from "vue-router";
 import s from './Welcome.module.scss'
 //这里需要引入logo    import logo form '../assets/icons/xxx'
 
-
 export const Welcome = defineComponent({
     setup: (props, context) => {
         return () => <div class={s.wrapper}>
