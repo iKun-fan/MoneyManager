@@ -1,4 +1,4 @@
-import s from './welcome.module.scss'
+import s from './WelcomeLayout.module.scss'
 import {FunctionalComponent} from "vue";
 
 export const Second: FunctionalComponent = () => {

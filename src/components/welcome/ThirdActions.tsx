@@ -1,4 +1,4 @@
-import s from './welcome.module.scss';
+import s from './WelcomeLayout.module.scss';
 import { RouterLink } from 'vue-router';
 import { FunctionalComponent } from 'vue';
 export const ThirdActions: FunctionalComponent = () => {

@@ -1,5 +1,5 @@
 import {FunctionalComponent} from "vue";
-import s from './welcome.module.scss'
+import s from './WelcomeLayout.module.scss'
 import {RouterLink} from "vue-router";
 
 export const FirstActions: FunctionalComponent = () => {

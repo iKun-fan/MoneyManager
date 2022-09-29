@@ -1,4 +1,4 @@
-import s from './welcome.module.scss';
+import s from './WelcomeLayout.module.scss';
 export const Third = () => {
     return (
         <div class={s.card}>

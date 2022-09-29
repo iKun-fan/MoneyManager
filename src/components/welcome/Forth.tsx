@@ -1,4 +1,4 @@
-import s from './welcome.module.scss';
+import s from './WelcomeLayout.module.scss';
 export const Forth = () => (
     <div class={s.card}>
         <svg>
