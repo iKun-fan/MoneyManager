@@ -1,7 +1,6 @@
 import {defineComponent, Transition, VNode} from "vue";
 import {RouteLocationNormalizedLoaded, RouterView} from "vue-router";
 import s from './Welcome.module.scss'
-import logo from '../assets/icons/mangosteen.svg'
 
 export const Welcome = defineComponent({
     setup: (props, context) => {
