@@ -1,5 +1,5 @@
 import {FunctionalComponent} from "vue";
-import s from './WelcomeLayout.module.scss'
+import s from './welcome.module.scss'
 
 export const WelcomeLayout: FunctionalComponent = (props, context) => {
 
@@ -15,5 +15,4 @@ export const WelcomeLayout: FunctionalComponent = (props, context) => {
                 </div>
             </div>
         )
-
 }
