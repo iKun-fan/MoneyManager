@@ -1,9 +1,12 @@
-import {defineComponent, Transition, VNode} from "vue";
+import {defineComponent, ref, Transition, VNode} from "vue";
 import {RouteLocationNormalizedLoaded, RouterView} from "vue-router";
 import s from './Welcome.module.scss'
+import {useSwipe} from "../hooks/useSwipe";
 
 export const Welcome = defineComponent({
     setup: (props, context) => {
+        const main = ref<HTMLElement | null>(null)
+        useSwipe(main)
         return () => <div class={s.wrapper}>
             <header>
                 <svg>
@@ -11,7 +14,7 @@ export const Welcome = defineComponent({
                 </svg>
                 <h1>芝士名字</h1>
             </header>
-            <main class={s.main}>
+            <main class={s.main} ref={main}>
                 <RouterView name="main">
                     {({Component: X, route: R}: { Component: VNode, route: RouteLocationNormalizedLoaded }) =>
                         <Transition enterFromClass={s.slide_fade_enter_from}
