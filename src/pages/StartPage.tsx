@@ -25,7 +25,7 @@ export const StartPage = defineComponent({
                     <Icon name="pig" class={s.pig}/>
                 </Center>
                 <div class={s.button_wrapper}>
-                    <Button class={s.button}>test</Button>
+                    <Button class={s.button}>开始记账</Button>
                 </div>
                 <FloatButton iconName='add'/>
                 {refOverlayVisible.value &&
