@@ -31,7 +31,7 @@ export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Option
         if (!distance.value)
             return ''
         const {x, y} = distance.value
-        if (Math.abs(x) > Math.abs(y))
+        if (Math.abs(x) > Math.abs(y) && Math.abs(x) > 50)  // 50是为了避免稍微一滑就切换下一页
             return x > 0 ? 'right' : 'left'
         else
             return y > 0 ? 'down' : 'up'
@@ -76,5 +76,3 @@ export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Option
         distance,
     }
 }
-
-// TODO: 下一步实现滑动切换路由

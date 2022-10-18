@@ -24,9 +24,8 @@ export const Welcome = defineComponent({
         watchEffect(()=>{
             if (swiping.value && direction.value === 'left')
                 replace()
-            // console.log(swiping.value, direction.value)
+            console.log(swiping.value, direction.value)
         })
-        // useSwipe(main)
         return () => <div class={s.wrapper}>
             <header>
                 <svg>
