@@ -3,7 +3,7 @@ export const time = (date = new Date()) => {
         format: (pattern = 'YYYY-MM-DD') => {
             const year = date.getFullYear()
             const month = date.getMonth() + 1
-            const day = date.getDay()
+            const day = date.getDate()
             const hour = date.getHours()
             const minute = date.getMinutes()
             const second = date.getSeconds()
