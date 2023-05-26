@@ -181,14 +181,6 @@ export const TagCreate = defineComponent({
                                             <li>😀</li>
                                             <li>😀</li>
                                             <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
-                                            <li>😀</li>
                                         </ol>
                                     </div>
                                 </div>
