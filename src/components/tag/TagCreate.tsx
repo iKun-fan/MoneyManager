@@ -1,8 +1,9 @@
-import {defineComponent, PropType} from "vue";
+import {defineComponent, PropType, reactive} from "vue";
 import {MainLayout} from "../../layouts/MainLayout";
 import {Icon} from "../../shared/Icon";
 import s from "./TagCreate.module.scss"
 import {Button} from "vant";
+import {EmojiSelect} from "../../shared/EmojiSelect";
 export const TagCreate = defineComponent({
     props: {
         name: {
@@ -10,6 +11,10 @@ export const TagCreate = defineComponent({
         }
     },
     setup: (props, context) => {
+        const formData = reactive({
+            name: '',
+            sign: 'x',
+        })
         return () => (
             <MainLayout>{{
                 title: () => '新建标签',
@@ -20,7 +25,7 @@ export const TagCreate = defineComponent({
                             <label class={s.formLabel}>
                                 <span class={s.formItem_name}>标签名</span>
                                 <div class={s.formItem_value}>
-                                    <input class={[s.formItem, s.input, s.error]}></input>
+                                    <input v-model={formData.name} class={[s.formItem, s.input, s.error]}></input>
                                 </div>
                                 <div class={s.formItem_errorHint}>
                                     <span>必填</span>
@@ -29,9 +34,9 @@ export const TagCreate = defineComponent({
                         </div>
                         <div class={s.formRow}>
                             <label class={s.formLabel}>
-                                <span class={s.formItem_name}>符号</span>
+                                <span class={s.formItem_name}>符号{formData.sign}</span>
                                 <div class={s.formItem_value}>
-
+                                    <EmojiSelect v-model={formData.sign} class={[s.formItem, s.emojiList, s.error]}/>
                                 </div>
                                 <div class={s.formItem_errorHint}>
                                     <span>必填</span>
