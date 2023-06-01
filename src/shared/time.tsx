@@ -46,7 +46,11 @@ export class Time {
         let date = new Date(this.date.getTime())
         switch (unit) {
             case "year":
+                const currrentDate = date.getDate()
+                date.setDate(1)
                 date.setFullYear(date.getFullYear() + amount)
+                const targetDate = new Date(date.getFullYear(), date.getMonth()+1, 0, 0, 0, 0).getDate()
+                date.setDate(Math.min(currrentDate, targetDate))
                 break
             case "month":
                 const d1 = date.getDate()
