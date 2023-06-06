@@ -6,6 +6,7 @@ import s from "./SignInPage.module.scss"
 import {Form, FormItem} from "../shared/Form";
 import {Button} from "../shared/Button";
 import axios from "axios";
+import {http} from "../shared/Http";
 
 export const SignInPage = defineComponent({
     setup: (props, context) => {
@@ -28,13 +29,16 @@ export const SignInPage = defineComponent({
                 {key: 'code', type: 'required', message: '必填'},
             ]))
         }
+        const onError = (error:any) => {
+            if (error.response.status === 422) {
+                Object.assign(errors, error.response.data.errors)
+            }
+            throw error
+        }
         const onClickSendValidationCode = async () => {
-            // const response = await axios.post('/api/v1/validation_codes', {email: formData.email})
-            // console.log(response)
-            const response = await axios.post('/api/v1/validation_codes', {email: formData.email})
-                .catch(() => {
-                    // fail
-                })
+            const response = await http
+                .post('/validation_codes', { email: formData.email })
+                .catch(onError)
             // success
             refValidationCode.value.startCount()
         }
