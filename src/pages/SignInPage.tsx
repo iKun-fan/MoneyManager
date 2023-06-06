@@ -1,4 +1,4 @@
-import {defineComponent, reactive} from "vue";
+import {defineComponent, reactive, ref} from "vue";
 import {validate} from "../shared/validate";
 import {MainLayout} from "../layouts/MainLayout";
 import {Icon} from "../shared/Icon";
@@ -17,6 +17,7 @@ export const SignInPage = defineComponent({
             email: [],
             code: []
         })
+        const refValidationCode = ref<any>()
         const onSubmit = (e:Event) => {
             console.log('submit')
             e.preventDefault()
@@ -28,8 +29,14 @@ export const SignInPage = defineComponent({
             ]))
         }
         const onClickSendValidationCode = async () => {
+            // const response = await axios.post('/api/v1/validation_codes', {email: formData.email})
+            // console.log(response)
             const response = await axios.post('/api/v1/validation_codes', {email: formData.email})
-            console.log(response)
+                .catch(() => {
+                    // fail
+                })
+            // success
+            refValidationCode.value.startCount()
         }
         return () => (
             <MainLayout>{
@@ -44,7 +51,7 @@ export const SignInPage = defineComponent({
                             </div>
                             <Form onSubmit={onSubmit}>
                                 <FormItem label="邮箱地址" type="text" placeholder='请输入邮箱，然后点击发送验证码' v-model={formData.email} error={errors.email?.[0]} />
-                                <FormItem label="验证码" type="validationCode" onClick={onClickSendValidationCode} placeholder='请输入六位验证码' v-model={formData.code} error={errors.code?.[0]} />
+                                <FormItem ref={refValidationCode} label="验证码" type="validationCode" onClick={onClickSendValidationCode} placeholder='请输入六位验证码' countFrom={60} v-model={formData.code} error={errors.code?.[0]} />
                                 <FormItem style={{ paddingTop: '96px' }}>
                                     <Button>登录</Button>
                                 </FormItem>
