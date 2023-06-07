@@ -1,5 +1,5 @@
 import {defineComponent, reactive, ref} from "vue";
-import {validate} from "../shared/validate";
+import {hasError, validate} from "../shared/validate";
 import {MainLayout} from "../layouts/MainLayout";
 import {Icon} from "../shared/Icon";
 import s from "./SignInPage.module.scss"
@@ -8,6 +8,7 @@ import {Button} from "../shared/Button";
 import axios from "axios";
 import {http} from "../shared/Http";
 import {useBool} from "../hooks/useBool";
+import {history} from "../shared/history";
 
 export const SignInPage = defineComponent({
     setup: (props, context) => {
@@ -30,6 +31,11 @@ export const SignInPage = defineComponent({
                 {key: 'email', type: 'pattern', regex: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/ ,message:"必须是邮箱地址"},
                 {key: 'code', type: 'required', message: '必填'},
             ]))
+            if (!hasError(errors)) {
+                const response = await http.post<{jwt: string}>('/session', formData)
+                localStorage.setItem('jwt', response.data.jwt)
+                history.push('/')
+            }
         }
         const onError = (error:any) => {
             if (error.response.status === 422) {

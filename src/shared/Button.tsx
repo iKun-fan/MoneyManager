@@ -39,6 +39,7 @@ export const Button = defineComponent({
             }
         })
         const onClick = () => {
+            // @ts-ignore
             props.onClick?.()
             selfDisabled.value = true
             setTimeout(()=>{
