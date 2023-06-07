@@ -9,6 +9,7 @@ import axios from "axios";
 import {http} from "../shared/Http";
 import {useBool} from "../hooks/useBool";
 import {history} from "../shared/history";
+import {useRoute, useRouter} from "vue-router";
 
 export const SignInPage = defineComponent({
     setup: (props, context) => {
@@ -22,6 +23,8 @@ export const SignInPage = defineComponent({
         })
         const refValidationCode = ref<any>()
         const {ref: refDisabled, toggle, on: disabled, off: enable} = useBool(false)
+        const router = useRouter()
+        const route = useRoute()
         const onSubmit = async (e:Event) => {
             console.log('submit')
             e.preventDefault()
@@ -34,7 +37,8 @@ export const SignInPage = defineComponent({
             if (!hasError(errors)) {
                 const response = await http.post<{jwt: string}>('/session', formData)
                 localStorage.setItem('jwt', response.data.jwt)
-                history.push('/')
+                const returnTo = route.query.return_to?.toString()
+                router.push(returnTo || '/')
             }
         }
         const onError = (error:any) => {
