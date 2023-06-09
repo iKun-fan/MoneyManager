@@ -25,7 +25,7 @@ export const routes: RouteRecordRaw[] = [
         path: '/welcome',
         component: Welcome,
         beforeEnter: (to, from, next) => {
-            localStorage.getItem('skipFeatures') === 'yes' ? next('/start') : next()
+            localStorage.getItem('skipFeatures') === 'yes' ? next('/items') : next()
         },
         children:[
             { path: '', redirect: '/welcome/1' },
@@ -35,7 +35,6 @@ export const routes: RouteRecordRaw[] = [
             { path: '4', name: "Welcome4", components: { main: Forth, footer: ForthActions }, },
         ]
     },
-    {path:'/start', component: StartPage},
     {
         path: '/items', component: ItemPage,
         children: [
