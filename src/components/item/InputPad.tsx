@@ -13,8 +13,6 @@ export const InputPad = defineComponent({
     setup: (props, context) => {
         const now = new Date()
         const refDate = ref<Date>(now)
-
-        const refAmount = ref('')
         const appendText = (n: number | string) => {
             const nString = n.toString()
             const dotIndex = refAmount.value.indexOf('.')
@@ -59,6 +57,7 @@ export const InputPad = defineComponent({
         const showDatePicker = () => refDatePickerVisible.value = true
         const hideDatePicker = () => refDatePickerVisible.value = false
         const setDate = (date: Date) => {refDate.value = date; hideDatePicker()}
+        const refAmount = ref('0')
         return () => <>
             <div class={s.dateAndAmount}>
                 <span class={s.date}>

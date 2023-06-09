@@ -4,7 +4,7 @@ import s from './Tabs.module.scss'
 export const Tabs = defineComponent({
     props: {
         classPrefix: {
-          type: String
+            type: String
         },
         selected: {
             type: String as PropType<string>,
@@ -15,8 +15,7 @@ export const Tabs = defineComponent({
     setup: (props, context) => {
         return () => {
             const tabs = context.slots.default?.()
-            if (!tabs)
-                return () => null
+            if (!tabs) return () => null
             for (let i = 0; i < tabs.length; i++) {
                 if (tabs[i].type !== Tab) {
                     throw new Error('<Tabs> only accepts <Tab> as children')

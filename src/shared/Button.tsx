@@ -7,12 +7,12 @@ interface Props{
 export const Button = defineComponent({
     props: {
         onClick: {
-            type: Function as PropType<(e:MouseEvent) => void>
+            type: Function as PropType<(e: MouseEvent) => void>
         },
         level: {
             type: String as PropType<'important' | 'normal' | 'danger'>,
             default: 'important'
-      },
+        },
         type: {
             type: String as PropType<'submit' | 'button'>,
             default: 'button'
@@ -38,9 +38,8 @@ export const Button = defineComponent({
                 return props.disabled
             }
         })
-        const onClick = () => {
-            // @ts-ignore
-            props.onClick?.()
+        const onClick = (e: MouseEvent) => {
+            props.onClick?.(e)
             selfDisabled.value = true
             setTimeout(()=>{
                 selfDisabled.value = false

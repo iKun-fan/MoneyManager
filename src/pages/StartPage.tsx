@@ -4,7 +4,7 @@ import {FloatButton} from "../shared/FloatButton";
 import s from './StartPage.module.scss'
 import {Center} from "../shared/Center";
 import {Icon} from "../shared/Icon";
-import {Overlay, OverlayIcon} from "../shared/Overlay";
+import {OverlayIcon} from "../shared/Overlay";
 import {RouterLink} from "vue-router";
 import {MainLayout} from "../layouts/MainLayout";
 

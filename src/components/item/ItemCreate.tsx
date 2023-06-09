@@ -5,7 +5,6 @@ import {Icon} from "../../shared/Icon";
 import {Tab, Tabs} from "../../shared/Tabs";
 import {InputPad} from "./InputPad";
 import {http} from "../../shared/Http";
-import {Button} from "../../shared/Button";
 import {useTags} from "../../shared/useTags";
 import {Tags} from "./Tags";
 
@@ -31,7 +30,7 @@ export const ItemCreate = defineComponent({
         return () => (
             <MainLayout class={s.layout}>{{
                 title: () => '记一笔',
-                icon: () => <Icon name="left" class={s.navIcon}/>,
+                icon: () => <Icon name="left" class={s.navIcon} />,
                 default: () => <>
                     <div class={s.wrapper}>
                         <Tabs v-model:selected={refKind.value} class={s.tabs}>
@@ -43,7 +42,7 @@ export const ItemCreate = defineComponent({
                             </Tab>
                         </Tabs>
                         <div class={s.inputPad_wrapper}>
-                            <InputPad/>
+                            <InputPad />
                         </div>
                     </div>
                 </>

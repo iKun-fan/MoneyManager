@@ -2,7 +2,6 @@ import {defineComponent, PropType, reactive} from "vue";
 import {Rules, validate} from "../../shared/validate";
 import s from "./Tag.module.scss"
 import {Button} from "../../shared/Button";
-import {EmojiSelect} from "../../shared/EmojiSelect";
 import {Form, FormItem} from "../../shared/Form";
 
 export const TagForm = defineComponent({
@@ -14,11 +13,10 @@ export const TagForm = defineComponent({
     setup: (props, context) => {
         const formData = reactive({
             name: '',
-            sign: ''
+            sign: '',
         })
-
-        const errors = reactive<{[k in keyof typeof formData] ?: string[]}>({})
-        const onSubmit = (e:Event) => {
+        const errors = reactive<{ [k in keyof typeof formData]?: string[] }>({})
+        const onSubmit = (e: Event) => {
             const rules: Rules<typeof formData> = [
                 { key: 'name', type: 'required', message: '必填' },
                 { key: 'name', type: 'pattern', regex: /^.{1,4}$/, message: '只能填 1 到 4 个字符' },
@@ -31,7 +29,6 @@ export const TagForm = defineComponent({
             Object.assign(errors, validate(formData, rules))
             e.preventDefault()
         }
-
         return () => (
             <Form onSubmit={onSubmit}>
                 <FormItem label='标签名'

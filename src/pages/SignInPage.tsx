@@ -5,10 +5,8 @@ import {Icon} from "../shared/Icon";
 import s from "./SignInPage.module.scss"
 import {Form, FormItem} from "../shared/Form";
 import {Button} from "../shared/Button";
-import axios from "axios";
 import {http} from "../shared/Http";
 import {useBool} from "../hooks/useBool";
-import {history} from "../shared/history";
 import {useRoute, useRouter} from "vue-router";
 import {refreshMe} from "../shared/me";
 
