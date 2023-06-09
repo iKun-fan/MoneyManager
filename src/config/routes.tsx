@@ -8,7 +8,6 @@ import {FirstActions} from "../components/welcome/FirstActions";
 import {SecondActions} from "../components/welcome/SecondActions";
 import {ThirdActions} from "../components/welcome/ThirdActions";
 import {ForthActions} from "../components/welcome/ForthActions";
-import {StartPage} from "../pages/StartPage";
 import {ItemPage} from "../pages/ItemPage";
 import {ItemList} from "../components/item/ItemList";
 import {ItemCreate} from "../components/item/ItemCreate"
