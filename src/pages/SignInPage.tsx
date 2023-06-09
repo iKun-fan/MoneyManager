@@ -22,26 +22,29 @@ export const SignInPage = defineComponent({
             code: []
         })
         const refValidationCode = ref<any>()
-        const {ref: refDisabled, toggle, on: disabled, off: enable} = useBool(false)
+        const { ref: refDisabled, toggle, on: disabled, off: enable } = useBool(false)
         const router = useRouter()
         const route = useRoute()
-        const onSubmit = async (e:Event) => {
+        const onSubmit = async (e: Event) => {
             e.preventDefault()
-            Object.assign(errors, {email: [], code: []})
+            Object.assign(errors, {
+                email: [], code: []
+            })
             Object.assign(errors, validate(formData, [
-                {key: 'email', type: 'required', message: '必填'},
-                {key: 'email', type: 'pattern', regex: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/ ,message:"必须是邮箱地址"},
-                {key: 'code', type: 'required', message: '必填'},
+                { key: 'email', type: 'required', message: '必填' },
+                { key: 'email', type: 'pattern', regex: /.+@.+/, message: '必须是邮箱地址' },
+                { key: 'code', type: 'required', message: '必填' },
             ]))
             if (!hasError(errors)) {
-                const response = await http.post<{ jwt: string }>('/session', formData).catch(onError)
+                const response = await http.post<{ jwt: string }>('/session', formData)
+                    .catch(onError)
                 localStorage.setItem('jwt', response.data.jwt)
                 const returnTo = route.query.return_to?.toString()
                 refreshMe()
                 router.push(returnTo || '/')
             }
         }
-        const onError = (error:any) => {
+        const onError = (error: any) => {
             if (error.response.status === 422) {
                 Object.assign(errors, error.response.data.errors)
             }
@@ -68,10 +71,17 @@ export const SignInPage = defineComponent({
                                 <h1 class={s.appName}>山竹记账</h1>
                             </div>
                             <Form onSubmit={onSubmit}>
-                                <FormItem label="邮箱地址" type="text" placeholder='请输入邮箱，然后点击发送验证码' v-model={formData.email} error={errors.email?.[0]} />
-                                <FormItem ref={refValidationCode} label="验证码" type="validationCode" onClick={onClickSendValidationCode} placeholder='请输入六位验证码' countFrom={60} disabled={refDisabled.value} v-model={formData.code} error={errors.code?.[0]} />
+                                <FormItem label="邮箱地址" type="text"
+                                          placeholder='请输入邮箱，然后点击发送验证码'
+                                          v-model={formData.email} error={errors.email?.[0]} />
+                                <FormItem ref={refValidationCode} label="验证码" type="validationCode"
+                                          placeholder='请输入六位数字'
+                                          countFrom={1}
+                                          disabled={refDisabled.value}
+                                          onClick={onClickSendValidationCode}
+                                          v-model={formData.code} error={errors.code?.[0]} />
                                 <FormItem style={{ paddingTop: '96px' }}>
-                                    <Button type='submit'>登录</Button>
+                                    <Button type="submit">登录</Button>
                                 </FormItem>
                             </Form>
                         </div>

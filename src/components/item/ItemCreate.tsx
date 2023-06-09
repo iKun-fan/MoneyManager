@@ -34,33 +34,47 @@ export const ItemCreate = defineComponent({
             throw error
         }
         const onSubmit = async () => {
-            await http.post<Resource<Item>>('/items', formData,
-                { params: { _mock: 'itemCreate' } }
-            ).catch(onError)
+            await http
+                .post<Resource<Item>>('/items', formData, {
+                    params: { _mock: 'itemCreate' }
+                })
+                .catch(onError)
             router.push('/items')
         }
         return () => (
-            <MainLayout class={s.layout}>{{
-                title: () => '记一笔',
-                icon: () => <BackIcon />,
-                default: () => (
-                    <>
-                        <div class={s.wrapper}>
-                            <Tabs v-model:selected={formData.kind} class={s.tabs}>
-                                <Tab name="支出">
-                                    <Tags kind="expenses" v-model:selected={formData.tags_id[0]} />
-                                </Tab>
-                                <Tab name="收入">
-                                    <Tags kind="income" v-model:selected={formData.tags_id[0]} />
-                                </Tab>
-                            </Tabs>
-                            <div class={s.inputPad_wrapper}>
-                                <InputPad v-model:happenAt={formData.happen_at} v-model:amount={formData.amount} onSubmit={onSubmit} />
+            <MainLayout class={s.layout}>
+                {{
+                    title: () => '记一笔',
+                    icon: () => <BackIcon />,
+                    default: () => (
+                        <>
+                            <div class={s.wrapper}>
+                                <Tabs v-model:selected={formData.kind} class={s.tabs}>
+                                    <Tab name="支出">
+                                        <Tags
+                                            kind="expenses"
+                                            v-model:selected={formData.tags_id[0]}
+                                        />
+                                    </Tab>
+                                    <Tab name="收入">
+                                        <Tags
+                                            kind="income"
+                                            v-model:selected={formData.tags_id[0]}
+                                        />
+                                    </Tab>
+                                </Tabs>
+                                <div class={s.inputPad_wrapper}>
+                                    <InputPad
+                                        v-model:happenAt={formData.happen_at}
+                                        v-model:amount={formData.amount}
+                                        onSubmit={onSubmit}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </>
-                )
-            }}</MainLayout>
+                        </>
+                    )
+                }}
+            </MainLayout>
         )
     }
 })

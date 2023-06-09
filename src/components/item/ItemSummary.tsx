@@ -43,7 +43,6 @@ export const ItemSummary = defineComponent({
             fetchItems()
         })
 
-
         const itemsBalance = reactive({
             expenses: 0, income: 0, balance: 0
         })
@@ -69,7 +68,7 @@ export const ItemSummary = defineComponent({
         return () => (
             <div class={s.wrapper}>
                 {items.value ? (
-                        <>
+                    <>
                         <ul class={s.total}>
                             <li>
                                 <span>收入</span>
@@ -106,7 +105,7 @@ export const ItemSummary = defineComponent({
                                 <span>没有更多</span>
                             }
                         </div>
-                        </>
+                    </>
                 ) : (
                     <div>记录为空</div>
                 )}

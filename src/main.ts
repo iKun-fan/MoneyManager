@@ -6,15 +6,15 @@ import {history} from "./shared/history";
 import '@svgstore'
 import {fetchMe, mePromise} from "./shared/me";
 
-const router = createRouter({history, routes,})
+const router = createRouter({ history, routes })
 
 fetchMe()
 
-const whiteList: Record<any, 'exact' | 'startWith'> = {
+const whiteList: Record<string, 'exact' | 'startsWith'> = {
     '/': 'exact',
     '/start': 'exact',
-    '/welcome': 'startWith',
-    '/sign_in': 'startWith',
+    '/welcome': 'startsWith',
+    '/sign_in': 'startsWith'
 }
 
 router.beforeEach((to, from) => {
@@ -23,7 +23,7 @@ router.beforeEach((to, from) => {
         if (value === 'exact' && to.path === key) {
             return true
         }
-        if (value === 'startWith' && to.path.startsWith(key)) {
+        if (value === 'startsWith' && to.path.startsWith(key)) {
             return true
         }
     }

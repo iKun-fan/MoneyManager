@@ -24,7 +24,7 @@ export const Tags = defineComponent({
             })
         })
         const onSelect = (tag: Tag) => {
-            context.emit('update:selected', tag.id)
+            context.emit('update:selected', tag.id);
         }
         const timer = ref<number>()
         const currentTag = ref<HTMLDivElement>()
@@ -58,26 +58,26 @@ export const Tags = defineComponent({
                         </div>
                         <div class={s.name}>新增</div>
                     </RouterLink>
-                    {tags.value.map(tag =>
-                        <div class={[s.tag, props.selected === tag.id ? s.selected : '']}
-                             onClick={() => onSelect(tag)}
-                             onTouchstart={(e)=>onTouchStart(e,tag)}
-                             onTouchend={onTouchEnd}
+                    {tags.value.map((tag) => (
+                        <div
+                            class={[s.tag, props.selected === tag.id ? s.selected : '']}
+                            onClick={() => onSelect(tag)}
+                            onTouchstart={(e)=>onTouchStart(e, tag)}
+                            onTouchend={onTouchEnd}
                         >
-                            <div class={s.sign}>
-                                {tag.sign}
-                            </div>
-                            <div class={s.name}>
-                                {tag.name}
-                            </div>
+                            <div class={s.sign}>{tag.sign}</div>
+                            <div class={s.name}>{tag.name}</div>
                         </div>
-                    )}
+                    ))}
                 </div>
                 <div class={s.more}>
-                    {hasMore.value ?
-                        <Button class={s.loadMore} onClick={fetchTags}>加载更多</Button> :
+                    {hasMore.value ? (
+                        <Button class={s.loadMore} onClick={fetchTags}>
+                            加载更多
+                        </Button>
+                    ) : (
                         <span class={s.noMore}>没有更多</span>
-                    }
+                    )}
                 </div>
             </>
         )
