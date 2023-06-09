@@ -3,6 +3,18 @@ import {fakerZH_CN as faker} from "@faker-js/faker";
 
 type Mock = (config: AxiosRequestConfig) => [number, any]
 
+export const mockTagEdit: Mock = config => {
+    const createTag = (attrs?: any) =>
+        ({
+            id: createId(),
+            name: faker.lorem.word(),
+            sign: faker.internet.emoji(),
+            kind: 'expenses',
+            ...attrs
+        })
+    return [200, {resource: createTag()}]
+}
+
 export const mockTagShow: Mock = config =>{
     const createTag = (attrs?: any) =>
         ({
