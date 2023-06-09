@@ -17,7 +17,6 @@ import {TagCreate} from "../components/tag/TagCreate";
 import {TagEdit} from "../components/tag/TagEdit";
 import {SignInPage} from "../pages/SignInPage";
 import {StatisticsPage} from "../pages/StatisticsPage";
-import {http} from "../shared/Http";
 
 export const routes: RouteRecordRaw[] = [
     {path: '/', redirect: '/welcome'},

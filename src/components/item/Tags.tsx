@@ -49,35 +49,37 @@ export const Tags = defineComponent({
                 clearTimeout(timer.value)
             }
         }
-        return () => <>
-            <div class={s.tags_wrapper} onTouchmove={onTouchMove}>
-                <RouterLink to={`/tags/create?kind=${props.kind}`} class={s.tag}>
-                    <div class={s.sign}>
-                        <Icon name="add" class={s.createTag} />
-                    </div>
-                    <div class={s.name}>新增</div>
-                </RouterLink>
-                {tags.value.map(tag =>
-                    <div class={[s.tag, props.selected === tag.id ? s.selected : '']}
-                         onClick={() => onSelect(tag)}
-                         onTouchstart={(e)=>onTouchStart(e,tag)}
-                         onTouchend={onTouchEnd}
-                    >
+        return () => (
+            <>
+                <div class={s.tags_wrapper} onTouchmove={onTouchMove}>
+                    <RouterLink to={`/tags/create?kind=${props.kind}`} class={s.tag}>
                         <div class={s.sign}>
-                            {tag.sign}
+                            <Icon name="add" class={s.createTag} />
                         </div>
-                        <div class={s.name}>
-                            {tag.name}
+                        <div class={s.name}>新增</div>
+                    </RouterLink>
+                    {tags.value.map(tag =>
+                        <div class={[s.tag, props.selected === tag.id ? s.selected : '']}
+                             onClick={() => onSelect(tag)}
+                             onTouchstart={(e)=>onTouchStart(e,tag)}
+                             onTouchend={onTouchEnd}
+                        >
+                            <div class={s.sign}>
+                                {tag.sign}
+                            </div>
+                            <div class={s.name}>
+                                {tag.name}
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
-            <div class={s.more}>
-                {hasMore.value ?
-                    <Button class={s.loadMore} onClick={fetchTags}>加载更多</Button> :
-                    <span class={s.noMore}>没有更多</span>
-                }
-            </div>
-        </>
+                    )}
+                </div>
+                <div class={s.more}>
+                    {hasMore.value ?
+                        <Button class={s.loadMore} onClick={fetchTags}>加载更多</Button> :
+                        <span class={s.noMore}>没有更多</span>
+                    }
+                </div>
+            </>
+        )
     }
 })

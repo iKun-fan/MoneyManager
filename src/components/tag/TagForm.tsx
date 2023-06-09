@@ -1,4 +1,4 @@
-import {defineComponent, onMounted, PropType, reactive} from "vue";
+import {defineComponent, onMounted, reactive} from "vue";
 import {hasError, Rules, validate} from "../../shared/validate";
 import s from "./Tag.module.scss"
 import {Button} from "../../shared/Button";

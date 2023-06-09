@@ -6,11 +6,6 @@ declare module '*.vue' {
   export default component
 }
 
-declare module '*.scss' {
-  const content: Record<string, any> = {}
-  export default content
-}
-
 type JSONValue = null | boolean | string | number | JSONValue[] | Record<string, JSONValue>
 
 type Tag = {

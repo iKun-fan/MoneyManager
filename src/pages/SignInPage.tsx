@@ -26,7 +26,6 @@ export const SignInPage = defineComponent({
         const router = useRouter()
         const route = useRoute()
         const onSubmit = async (e:Event) => {
-            console.log('submit')
             e.preventDefault()
             Object.assign(errors, {email: [], code: []})
             Object.assign(errors, validate(formData, [
