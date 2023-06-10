@@ -4,6 +4,8 @@ import {ItemSummary} from "./ItemSummary";
 
 export const ItemList = defineComponent({
     setup: (props, context) => {
-        <TimeTabsLayout component={ItemSummary}/>
+        return () => (
+            <TimeTabsLayout component={ItemSummary}/>
+        )
     }
 })

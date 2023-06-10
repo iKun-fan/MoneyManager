@@ -25,13 +25,13 @@ export const validate = <T extends FData>(formData: T, rules: Rules<T>) => {
                     errors[key] = errors[key] ?? []
                     errors[key]?.push(message)
                 }
-                break;
+                break
             case 'pattern':
                 if (!isEmpty(value) && !rule.regex.test(value!.toString())) {
                     errors[key] = errors[key] ?? []
                     errors[key]?.push(message)
                 }
-                break;
+                break
             case 'notEqual':
                 if (!isEmpty(value) && value === rule.value) {
                     errors[key] = errors[key] ?? []

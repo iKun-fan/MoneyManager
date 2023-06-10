@@ -17,7 +17,7 @@ const demo = defineComponent({
             type: String as PropType<string>,
             required: false
         }
-    },
+    }
 })
 
 export const TimeTabsLayout = defineComponent({

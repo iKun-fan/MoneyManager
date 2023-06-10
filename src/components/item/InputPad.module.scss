@@ -1,7 +1,5 @@
 .wrapper {
-
 }
-
 .dateAndAmount {
   background: var(--overlay-bg);
   display: flex;
@@ -10,7 +8,7 @@
   padding: 16px;
   font-family: monospace;
   border-top: 1px solid var(--button-border-color);
-  >.date {
+  > .date {
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -20,22 +18,21 @@
       width: 24px;
       height: 24px;
       margin-right: 8px;
-      fill: var(--amount-text)
+      fill: var(--amount-text);
     }
   }
-  >.amount {
+  > .amount {
     font-size: 20px;
     color: var(--amount-text);
   }
 }
-
 .buttons {
   display: grid;
   grid-template-areas:
-          "n1 n2 n3 d"
-          "n4 n5 n6 d"
-          "n7 n8 n9 s"
-          "n0 n0 nd s";
+    "n1 n2 n3 d"
+    "n4 n5 n6 d"
+    "n7 n8 n9 s"
+    "n0 n0 nd s";
   grid-auto-rows: 48px;
   grid-auto-columns: 1fr;
   gap: 1px;
@@ -77,13 +74,14 @@
     }
     &:nth-child(11) {
       grid-area: n0;
-    }&:nth-child(12) {
-       grid-area: d;
-     }
+    }
+    &:nth-child(12) {
+      grid-area: d;
+    }
     &:nth-child(13) {
       grid-area: s;
-      background: var(--button-bg-imortant);
-      color: var(--button-text-imortant);
+      background: var(--number-button-bg-important);
+      color: var(--number-button-text-important);
     }
   }
 }

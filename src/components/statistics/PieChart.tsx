@@ -28,7 +28,6 @@ const defaultOption = {
         }
     ]
 }
-
 export const PieChart = defineComponent({
     props: {
         data: {

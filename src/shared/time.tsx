@@ -1,6 +1,5 @@
 export class Time {
     date: Date
-
     constructor(date?: string | Date) {
         if (date === undefined) {
             this.date = new Date()
@@ -10,7 +9,6 @@ export class Time {
             this.date = date
         }
     }
-
     format(pattern = 'YYYY-MM-DD') {
         const year = this.date.getFullYear()
         const month = this.date.getMonth() + 1
@@ -27,39 +25,29 @@ export class Time {
             .replace(/ss/, second.toString().padStart(2, '0'))
             .replace(/SSS/, msecond.toString().padStart(3, '0'))
     }
-
     firstDayOfMonth() {
         return new Time(new Date(this.date.getFullYear(), this.date.getMonth(), 1, 0, 0, 0))
     }
-
     firstDayOfYear() {
         return new Time(new Date(this.date.getFullYear(), 0, 1, 0, 0, 0))
     }
-
     lastDayOfMonth() {
         return new Time(new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0, 0, 0, 0))
     }
-
     lastDayOfYear() {
         return new Time(new Date(this.date.getFullYear() + 1, 0, 0, 0, 0, 0))
     }
-
     getRaw() {
         return this.date
     }
     getTimestamp() {
         return this.date.getTime()
     }
-
     add(amount: number, unit: 'year' | 'month' | 'day' | 'hour' | 'minute' | 'second' | 'millisecond') {
         let date = new Date(this.date.getTime())
         switch (unit) {
             case "year":
-                const currrentDate = date.getDate()
-                date.setDate(1)
                 date.setFullYear(date.getFullYear() + amount)
-                const targetDate = new Date(date.getFullYear(), date.getMonth()+1, 0, 0, 0, 0).getDate()
-                date.setDate(Math.min(currrentDate, targetDate))
                 break
             case "month":
                 const d1 = date.getDate()

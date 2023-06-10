@@ -1,5 +1,5 @@
-import {AxiosRequestConfig} from "axios";
-import {fakerZH_CN as faker} from "@faker-js/faker";
+import { fakerZH_CN as faker } from '@faker-js/faker'
+import { AxiosRequestConfig } from 'axios'
 
 type Mock = (config: AxiosRequestConfig) => [number, any]
 
@@ -144,7 +144,7 @@ export const mockItemCreate: Mock = (config) => {
                 created_at: '2022-07-03T15:35:56.301Z',
                 updated_at: '2022-07-03T15:35:56.301Z',
                 kind: 'expenses'
-            }
+            } as Item
         }
     ]
 }
