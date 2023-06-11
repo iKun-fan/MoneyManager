@@ -3,7 +3,7 @@ import s from  './InputPad.module.scss';
 import {Icon} from "../../shared/Icon";
 import {Time} from "../../shared/time";
 import {DatetimePicker, Popup} from "vant";
-import 'vant/lib/index.css';
+
 export const InputPad = defineComponent({
     props: {
         happenAt: String,
