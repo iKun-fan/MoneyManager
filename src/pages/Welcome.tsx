@@ -4,6 +4,8 @@ import s from './Welcome.module.scss';
 import {throttle} from "../shared/throttle";
 import {useSwipe} from "../hooks/useSwipe";
 
+type Params = { Component: VNode, route: RouteLocationNormalizedLoaded }
+
 const pushMap: Record<string, string> = {
     'Welcome1': '/welcome/2',
     'Welcome2': '/welcome/3',
@@ -34,12 +36,13 @@ export const Welcome = defineComponent({
             </header>
             <main class={s.main} ref={main}>
                 <RouterView name="main">
-                    {({ Component: X, route: R }: { Component: VNode, route: RouteLocationNormalizedLoaded }) =>
-                        <Transition enterFromClass={s.slide_fade_enter_from}
-                                    enterActiveClass={s.slide_fade_enter_active}
-                                    leaveToClass={s.slide_fade_leave_to}
-                                    leaveActiveClass={s.slide_fade_leave_active}>
-                            {X}
+                    {({ Component: comp }: Params) =>
+                        <Transition
+                            enterFromClass={s.slide_fade_enter_from}
+                            enterActiveClass={s.slide_fade_enter_active}
+                            leaveToClass={s.slide_fade_leave_to}
+                            leaveActiveClass={s.slide_fade_leave_active}>
+                            {comp}
                         </Transition>
                     }
                 </RouterView>
