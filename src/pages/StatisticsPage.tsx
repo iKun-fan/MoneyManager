@@ -12,3 +12,5 @@ export const StatisticsPage = defineComponent({
         )
     }
 })
+
+export default StatisticsPage
